@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - GitHub Bot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .success-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+        
+        h1 {
+            color: #24292e;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .telegram-btn {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .telegram-btn:hover {
+            background: #0077b5;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .steps {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .steps h3 {
+            color: #0366d6;
+            margin-bottom: 15px;
+        }
+        
+        .steps ol {
+            padding-left: 20px;
+        }
+        
+        .steps li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .success-card {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .success-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="success-icon">🎉</div>
+        <h1>GitHub Connected Successfully!</h1>
+        <p>Your GitHub account has been successfully linked with the Telegram bot.</p>
+        
+        <div class="steps">
+            <h3>Next Steps:</h3>
+            <ol>
+                <li>Return to Telegram</li>
+                <li>Send <code>/repos</code> to see your repositories</li>
+                <li>Use <code>/help</code> for all available commands</li>
+                <li>Start managing your GitHub projects!</li>
+            </ol>
+        </div>
+        
+        <a href="https://t.me/GitHubmngbot" class="telegram-btn" target="_blank">
+            🔗 Return to Telegram Bot
+        </a>
+        
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">
+            You can now close this window. The bot is ready to use!
+        </p>
+    </div>
+    
+    <script>
+        // Auto-close after 10 seconds
+        setTimeout(() => {
+            // Try to close window
+            window.close();
+        }, 10000);
+        
+        // Notify backend of success
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const telegramId = urlParams.get('telegramId');
+            
+            if (telegramId) {
+                // Send success notification to backend
+                fetch(`/api/user/verify/${telegramId}`, {
+                    method: 'POST'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
