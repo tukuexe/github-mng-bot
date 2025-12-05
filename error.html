@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - GitHub Bot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .error-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .error-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #dc3545;
+        }
+        
+        h1 {
+            color: #24292e;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-telegram {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .btn-retry {
+            background: #f8f9fa;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-telegram:hover {
+            background: #0077b5;
+        }
+        
+        .btn-retry:hover {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .error-details {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #333;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .error-card {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .error-icon {
+                font-size: 4rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-card">
+        <div class="error-icon">❌</div>
+        <h1>Connection Failed</h1>
+        <p>We couldn't connect your GitHub account. This could be due to:</p>
+        
+        <div class="error-details">
+            <strong>Possible Issues:</strong>
+            <ul>
+                <li>GitHub authentication was cancelled</li>
+                <li>Network connection issue</li>
+                <li>Temporary GitHub API outage</li>
+                <li>Invalid or expired OAuth token</li>
+            </ul>
+        </div>
+        
+        <div class="btn-group">
+            <a href="https://t.me/GitHubmngbot" class="btn btn-telegram">
+                🤖 Return to Bot
+            </a>
+            <button onclick="retryConnection()" class="btn btn-retry">
+                🔄 Try Again
+            </button>
+        </div>
+        
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">
+            If the problem persists, contact @YourSupport
+        </p>
+    </div>
+    
+    <script>
+        function retryConnection() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const telegramId = urlParams.get('telegramId');
+            
+            if (telegramId) {
+                // Redirect to connect page
+                window.location.href = `/auth/github?telegramId=${telegramId}`;
+            } else {
+                alert('Telegram ID missing. Please return to bot and use /connect again.');
+            }
+        }
+        
+        // Show error message from URL
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            
+            if (error) {
+                console.error('GitHub OAuth Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
