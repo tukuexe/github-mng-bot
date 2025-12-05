@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Bot - Agreement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #24292e 0%, #0366d6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 40px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #0366d6;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section p, .section li {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .section ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .highlight {
+            background: #f6f8fa;
+            padding: 15px;
+            border-left: 4px solid #0366d6;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 20px;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 18px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .btn-agree {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+        
+        .btn-disagree {
+            background: #f8f9fa;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-agree:hover {
+            background: linear-gradient(135deg, #218838 0%, #1e9e8a 100%);
+        }
+        
+        .btn-disagree:hover {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .telegram-badge {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header, .content {
+                padding: 25px;
+            }
+            
+            .actions {
+                flex-direction: column;
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📜 GitHub Bot Agreement</h1>
+            <p>Welcome to GitHub Management Bot! Please read and accept the terms below.</p>
+            <div class="telegram-badge">
+                🤖 Bot: @GitHubmngbot
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📋 Terms of Service</h2>
+                <p>By using the GitHub Management Bot, you agree to the following terms:</p>
+                
+                <div class="highlight">
+                    <strong>Important:</strong> This bot requires access to your GitHub account to provide full functionality.
+                </div>
+                
+                <h3>1. Data Collection & Usage</h3>
+                <p>We collect and store:</p>
+                <ul>
+                    <li>Your Telegram User ID for bot communication</li>
+                    <li>GitHub OAuth tokens for API access (encrypted)</li>
+                    <li>Repository metadata for bot operations</li>
+                    <li>Bot usage statistics for improvement</li>
+                </ul>
+                
+                <h3>2. Permissions Required</h3>
+                <p>The bot requests these GitHub permissions:</p>
+                <ul>
+                    <li><strong>Read access</strong> to your repositories</li>
+                    <li><strong>Write access</strong> to manage repositories</li>
+                    <li><strong>Delete access</strong> for file management</li>
+                    <li><strong>Webhook access</strong> for repository events</li>
+                </ul>
+                
+                <h3>3. Your Responsibilities</h3>
+                <ul>
+                    <li>Do not abuse GitHub API rate limits</li>
+                    <li>Only manage repositories you own or have permission for</li>
+                    <li>Comply with GitHub's Terms of Service</li>
+                    <li>Keep your Telegram account secure</li>
+                </ul>
+                
+                <h3>4. Privacy & Security</h3>
+                <p>We implement:</p>
+                <ul>
+                    <li>Encrypted token storage</li>
+                    <li>Secure API communication</li>
+                    <li>No sharing of personal data</li>
+                    <li>Regular security audits</li>
+                </ul>
+                
+                <h3>5. Service Limitations</h3>
+                <p>The bot is provided "as-is" with:</p>
+                <ul>
+                    <li>No warranty for service continuity</li>
+                    <li>Limited support availability</li>
+                    <li>Subject to GitHub API availability</li>
+                    <li>May have downtime for maintenance</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="https://t.me/GitHubmngbot" class="btn btn-disagree">
+                ❌ Decline & Close
+            </a>
+            <button onclick="agreeTerms()" class="btn btn-agree">
+                ✅ I Agree & Continue
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function agreeTerms() {
+            // Get Telegram ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const telegramId = urlParams.get('telegramId');
+            
+            // Send agreement to backend
+            fetch('/api/user/agree', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ telegramId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Close window and notify user to return to Telegram
+                    alert('✅ Agreement accepted! Please return to Telegram and tap "Continue".');
+                    window.close();
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert('❌ Network error. Please try again.');
+                console.error('Error:', error);
+            });
+        }
+        
+        // Auto-fill Telegram ID if present
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const telegramId = urlParams.get('telegramId');
+            
+            if (telegramId) {
+                console.log('Telegram ID detected:', telegramId);
+                // You can show the ID or use it as needed
+            }
+        }
+    </script>
+</body>
+</html>
