@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: githubmng-xmn
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GITHUB_CLIENT_ID
+        sync: false
+      - key: GITHUB_CLIENT_SECRET
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    autoDeploy: true
+    healthCheckPath: /health
